@@ -3,6 +3,7 @@ package model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class Produit {
@@ -13,11 +14,13 @@ public class Produit {
 	private int idProduit;
 	
 	private String nomProduit;
+	@Transient
+	private String description;
 
 	public Produit() {
 	}
 
-	public Produit(String nomProduit) {
+	public Produit(String nomProduit, String description) {
 		this.nomProduit = nomProduit;
 	}
 
@@ -37,10 +40,20 @@ public class Produit {
 		this.nomProduit = nomProduit;
 	}
 
-	@Override
-	public String toString() {
-		return "Produit [idProduit=" + idProduit + ", nomProduit=" + nomProduit + "]";
+	
+	public String getDescription() {
+		return description;
 	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String toString() {
+		return "Produit [idProduit=" + idProduit + ", nomProduit=" + nomProduit + ", description=" + description + "]";
+	}
+
+	
 	
 	
 	

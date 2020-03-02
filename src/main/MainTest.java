@@ -8,7 +8,7 @@ public class MainTest {
 
 	public static void main(String[] args) {
 		
-		Produit pr=new Produit("Samsung S10");
+		Produit pr=new Produit("Samsung S10", "Beau produit fiable");
 		IProduitDao dao= new ProduitDao();
 		
 		dao.createProduit(pr);

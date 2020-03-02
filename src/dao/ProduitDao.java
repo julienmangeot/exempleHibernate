@@ -1,9 +1,14 @@
 package dao;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
+
 import model.Produit;
 
 public class ProduitDao implements IProduitDao{
@@ -44,7 +49,20 @@ public class ProduitDao implements IProduitDao{
 			System.out.println("failed product suppresssion");
 			return false;
 		}
-		
 	}
 
+	public List<Produit> showProduct(){
+		List<Produit> list;
+		
+		try {
+			session.beginTransaction();
+			SQLQuery query =session.createSQLQuery("Select * from produit");
+			 query.addEntity(Produit.class);
+			return list=query.list();
+		}
+		catch(HibernateException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
